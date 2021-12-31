@@ -1,0 +1,24 @@
+{
+  "languageserver": {
+        "ccls": {
+          "command": "ccls",
+          "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"],
+          "rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/"],
+          "initializationOptions": {
+              "cache": {
+               "directory": "/tmp/ccls"
+              }
+            }
+        },
+        "dockerfile": {
+          "command": "docker-langserver",
+          "filetypes": ["dockerfile"],
+          "args": ["--stdio"]
+        },
+        "sql": {
+          "command": "sql-language-server",
+          "args" : ["up", "--method", "stdio"],
+          "filetypes": ["sql", "mysql"]
+        }
+  }
+}
