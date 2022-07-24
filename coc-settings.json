@@ -20,5 +20,6 @@
           "args" : ["up", "--method", "stdio"],
           "filetypes": ["sql", "mysql"]
         }
-  }
+  },
+  "diagnostic.displayByAle": true
 }

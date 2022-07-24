@@ -24,7 +24,7 @@ if dein#load_state(s:dein_dir)
 	call dein#load_toml( s:toml_dir . '/init_plugin.toml', {'lazy': 0} )
 	call dein#load_toml( s:toml_dir . '/lazy_plugin.toml', {'lazy': 1} )
 	" call dein#load_toml( s:toml_dir . '/vim-surround.toml', {} )
-	" call dein#load_toml( s:toml_dir . '/yankround.vim.toml', {} )
+	" call dein#load_toml( s:toml_dir . '/yankround.vims.toml', {} )
 	" call dein#load_toml( s:toml_dir . '/fzf.vim.toml', {} )
 	" call dein#load_toml( s:toml_dir . '/lightline.vim.toml', {} )
 	" call dein#load_toml( s:toml_dir . '/ctrlp.vim.toml', {} )
@@ -197,3 +197,4 @@ if executable('clang-format')
     autocmd BufWrite,FileWritePre,FileAppendPre *.[ch]pp call s:clang_format()
   augroup END
 endif
+
