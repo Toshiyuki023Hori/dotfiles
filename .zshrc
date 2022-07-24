@@ -5,22 +5,22 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# zコマンドを使う
+source ~/z_cmd/z.sh
+
 alias mysql="/usr/local/mysql/bin/mysql"
-alias mysql="/usr/local/mysql/bin/mysql"
-alias mysql="/usr/local/mysql/bin/mysql"
-alias mysql="/usr/local/mysql/bin/mysql"
-alias mysql="/usr/local/mysql/bin/mysql"
-alias mysql="/usr/local/mysql/bin/mysql"
+alias algo="cd /Users/mac_toshi/Documents/0_Algo/1_algo_training"
+alias vplug="cd ~/.config/nvim/dein/plugins"
 
 # Git Alias
-alias gcma='git checkout master'
-alias gcdv='git checkout develop'
-alias gs='git status'
-alias ga-a='git add --all'
-alias gc-b='git checkout -b'
+alias g='git'
+alias gst='git status'
 alias gc-m='git commit -m'
-alias gpoh='git push origin HEAD'
-alias gl='git log'
+alias gc='git checkout'
+### git treeは個人的に作成したgit logの整形alias(.gitconfig参照)
+alias gtree='git tree'
+
+
 # Push all changes to current branch
 gcom () {
     git add . && git status
@@ -35,24 +35,69 @@ gpdv () {
 }
 
 # npm Alias
+# nodebrewでnpmは管理
+# /Users/mac_toshi/.nodebrew/node/v16.13.1/libにモジュールある
 alias ni='npm install'
 alias nu='npm uninstall'
 alias nis="npm install --save"
 alias nus="npm uninstall --save"
-alias nst='npm start'
 
-# django Alias
-alias pmr='python manage.py runserver'
-alias sva='source venv/bin/activate'
-alias pmmm='python manage.py makemigrations'
-alias pmmg='python manage.py migrate'
+# # django Alias
+# alias pmr='python manage.py runserver'
+# alias sva='source venv/bin/activate'
+# alias pmmm='python manage.py makemigrations'
+# alias pmmg='python manage.py migrate'
 
-# Vim Alias
-alias vz='code ~/.zshrc'
+# zsh Alias
+alias vz='vi ~/.zshrc'
 alias sz='source ~/.zshrc'
 alias vs="code"
+
+# #　Docker Alias
+alias d-c='docker-compose'
+alias dcb='docker-compose build'
+alias dcud='docker-compose up -d'
+alias dsall='docker stop $(docker ps -q)'
+alias dsp-v='docker system prune --volumes'
+alias d-cex='docker-compose exec'
+
+# expo alias
+alias exr='expo r'
+alias exr-c='expo r -c'
+
+# yarn alias
+alias ya='yarn'
+
+# Linux Alias
+alias j='z'
+alias ls='exa'
+alias lssp='exa -lahg --icons --git --time-style=long-iso'
+alias cat='bat'
+alias prs='procs'
 alias ...="cd ../.."
 alias ....="cd ../../../"
+
+# Vim Alias
+alias vi="nvim"
+alias vv='vi ~/.vimrc'
+alias vini='vi ~/.config/nvim/init.vim'
+alias cdein='cd ~/.cache/dein'
+alias tm='tmux'
+alias tmks='tmux kill-session'
+alias tmls='tmux ls'
+
+# Expo Alias
+kcash(){
+        echo "Are you sure in your project dir?" && read answer;
+        if [ "$answer" = "y" ]; then
+                rm -rf node_modules
+                yarn install
+                watchman watch-del-all
+                rm -fr $TMPDIR/haste-map-*
+                rm -rf $TMPDIR/metro-cache
+                echo "Cache is gone."
+        fi
+}
 
 # cdなしでディレクトリ移動
 setopt auto_cd
@@ -60,6 +105,27 @@ setopt auto_cd
 # path
 export PATH="/usr/local/mysql/bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
+
+### nodeがHomebrewに入っているのもあって、nodebrewのnodeを参照するように設定
+export PATH=$HOME/.nodebrew/current/bin:$PATH
+export PGDATA='/usr/local/var/postgres'
+export XDG_CONFIG_HOME=/Users/mac_toshi/.config
+export XDG_CACHE_HOME=/Users/mac_toshi/.cache
+export PATH="$PATH:$HOME/.fzf/bin"
+export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
+export FZF_DEFAULT_OPTS='--height 30% --border'
+
+### open Java Developers Kit(open JDKのパス)
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# [[]]は条件式の意味(testと等価)
+# -dはあるディレクトリが存在しているかをtestする
+# [[ -d ~/.rbenv  ]] && \
+#   export PATH=${HOME}/.rbenv/bin:${PATH} && \
+#   eval "$(rbenv init -)"
 
 
 #####################################################################
@@ -69,23 +135,23 @@ if [[ ! -d ~/.zplug ]];then
 fi
 
 # zplugを使う
-source ~/.zplug/init.zsh
+if [ -f ${HOME}/.zplug/init.zsh ]; then
+    source ${HOME}/.zplug/init.zsh
+fi
 
 # 自分自身をプラグインとして管理
-zplug "zplug/zplug", hook-build:'zplug --self-manage'
+zplug "zplug/zplug", hook-build:'zplug --self-manage'√
 
 # ここに使いたいプラグインを書いておく
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-autosuggestions"
-zplug "plugins/git", from:oh-my-zsh
-zplug "peterhurford/git-aliases.zsh"
+# # # gitのエイリアス多すぎてつかいづらいからコメントアウト : 自分で定義するときに参考に使う分にはいいかも https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git
+# zplug "plugins/git", from:oh-my-zsh
+# zplug "peterhurford/git-aliases.zsh"
 zplug "zsh-users/zsh-history-substring-search"
 zplug "romkatv/powerlevel10k", as:theme, depth:1
-
-# oh-my-zsh をサービスと見なして、
-# そこからインストールする
-zplug "plugins/git", from:oh-my-zsh
+zplug "marzocchi/zsh-notify"
 
 zplug "stedolan/jq", from:gh-r, as:command \
     | zplug "b4b4r07/emoji-cli", if:"which jq"
@@ -121,6 +187,8 @@ zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
 # キャッシュの利用による補完の高速化
 zstyle ':completion::complete:*' use-cache true
 
+# 実行に15秒以上かかるコマンドの終了を通知させる
+zstyle ':notify:*' command-complete-timeout 20
 
 autoload -Uz colors ; colors
 
@@ -163,3 +231,6 @@ PROMPT='%F{magenta}%m@%n%f %F{blue}%~%f$ '
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# To use shell integration, run this .zsh file whenever starting terminal
+source ~/.iterm2_shell_integration.zsh
