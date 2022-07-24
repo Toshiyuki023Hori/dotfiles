@@ -21,6 +21,39 @@ Main(require(&quot;fs&quot;).readFileSync(&quot;/dev/stdin&quot;, &quot;utf8&quo
 		</snippets>
 	</folder>
 	<folder>
+		<title>Docker</title>
+		<snippets>
+			<snippet>
+				<title>stop containers</title>
+				<content>docker stop $(docker ps -q)</content>
+			</snippet>
+			<snippet>
+				<title>stop containers including stopping</title>
+				<content>docker stop $(docker ps -a -q)</content>
+			</snippet>
+			<snippet>
+				<title>prune volumes</title>
+				<content>docker system prune --volumes</content>
+			</snippet>
+			<snippet>
+				<title>delete images</title>
+				<content>docker rmi $(docker images -a -q)</content>
+			</snippet>
+			<snippet>
+				<title>delete containers</title>
+				<content>docker rm $(docker ps -a -q)</content>
+			</snippet>
+			<snippet>
+				<title>delete EXITED containers</title>
+				<content>docker rm $(docker ps --filter status=exited -q)</content>
+			</snippet>
+			<snippet>
+				<title>標準入力を実行後も開き続け操作</title>
+				<content>docker exec -it &lt;コンテナ名&gt; bash</content>
+			</snippet>
+		</snippets>
+	</folder>
+	<folder>
 		<title>PortFolio</title>
 		<snippets>
 			<snippet>
@@ -58,6 +91,41 @@ Main(require(&quot;fs&quot;).readFileSync(&quot;/dev/stdin&quot;, &quot;utf8&quo
 			<snippet>
 				<title>extra exchange</title>
 				<content>https://extra-exchane.herokuapp.com/top</content>
+			</snippet>
+		</snippets>
+	</folder>
+	<folder>
+		<title>Rails on Docker</title>
+		<snippets>
+			<snippet>
+				<title>gem install (volume使用)</title>
+				<content>docker-compose run api bundle install</content>
+			</snippet>
+			<snippet>
+				<title>docker run --rm</title>
+				<content>docker-compose run api --rm</content>
+			</snippet>
+			<snippet>
+				<title>annotate routes</title>
+				<content>bundle exec rake annotate_routes</content>
+			</snippet>
+		</snippets>
+	</folder>
+	<folder>
+		<title>Vim</title>
+		<snippets>
+			<snippet>
+				<title>recache dein</title>
+				<content>:call dein#recache_runtimepath()</content>
+			</snippet>
+		</snippets>
+	</folder>
+	<folder>
+		<title>MISC</title>
+		<snippets>
+			<snippet>
+				<title>show parent branch</title>
+				<content>git show-branch | grep &apos;*&apos; | grep -v &quot;$(git rev-parse --abbrev-ref HEAD)&quot; | head -1 | awk -F&apos;[]~^[]&apos; &apos;{print $2}&apos;</content>
 			</snippet>
 		</snippets>
 	</folder>

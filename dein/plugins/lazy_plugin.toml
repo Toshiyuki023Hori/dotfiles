@@ -8,20 +8,26 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'alvan/vim-closetag'
-on_ft = ['html', 'xhtml', 'javascript', 'typescript', 'javascript.jsx', 'typescript.tsx']
-hook_add = '''
-        let g:closetag_filenames='*.html'
-        let g:closetag_xhtml_filenames='*.jsx,*.tsx,*.vue'
-        let g:closetag_filetypes='html'
-        let g:closetag_xhtml_filetypes='jsx,tsx,javascript.jsx,typescript.tsx,vue'
-        let g:closetag_emptyTags_caseSensitive=1
-        let g:closetag_shortcut='>'
-'''
+repo = 'tpope/vim-endwise'
+on_ft = ['ruby', 'rb']
+
+# [[plugins]]
+# repo   = 'rhysd/git-messenger.vim'
+# on_cmd = 'GitMessenger'
+# on_map = '<Plug>(git-messenger'
+# hook_add = ''' "{{{
+#         let g:git_messenger_no_default_mappings = v:true
+#         nnoremap <silent>CM :GitMessenger<CR>
+# "}}} '''
+
+[[plugins]]
+#markdown preview
+repo = 'styled-components/vim-styled-components'
+on_ft = ['ts','tsx','js','jsx']
 
 [[plugins]]
 repo = 'tpope/vim-endwise'
-on_ft = ['ruby']
+on_ft = ['ruby', 'rb']
 
 #### どうやらvim-clangもdeopleteも効いていないご様子
 #### 今後研究する

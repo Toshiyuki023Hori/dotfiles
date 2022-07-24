@@ -6,6 +6,10 @@ repo = 'neoclide/coc.nvim'
 rev = 'release'
 on_i = 1
 merged = 0
+hook_add = '''
+        let g:coc_global_extensions = ['coc-json','coc-tsserver','coc-prettier','coc-eslint']
+        noremap <Space>gh :call CocAction('doHover')<CR>
+'''
 # hook_source = 'call coil398#init#coc#hook_source()'
 
 [[plugins]]
@@ -95,10 +99,19 @@ hook_add = '''
 [[plugins]]
 repo = 'cohama/lexima.vim'
 
+# なんか効かんくなったからコメントアウト
+# [[plugins]]
+# repo = 'nathanaelkane/vim-indent-guides'
+# hook_add = '''
+#         let g:indent_guides_enable_on_vim_startup = 1
+# '''
+
 [[plugins]]
-repo = 'nathanaelkane/vim-indent-guides'
+repo = 'Yggdroot/indentLine'
 hook_add = '''
-        let g:indent_guides_enable_on_vim_startup = 1
+        let g:indentLine_color_term =239
+        let g:indentLine_color_gui = '#708090'
+        let g:indentLine_char = '|'
 '''
 
 # キーマッピング作ったからとりあえず退避
@@ -111,9 +124,19 @@ hook_add = '''
 [[plugins]]
 repo = 'sainnhe/gruvbox-material'
 hook_add = '''
-        let g:gruvbox_material_visual = 'blue background'
+        let g:gruvbox_material_background = 'hard'
+        let g:gruvbox_material_visual = 'red background'
+        let g:gruvbox_material_palette = 'original'
+        let g:gruvbox_material_enable_italic = 1
         colorscheme gruvbox-material
 '''
+
+# [[plugins]]
+# repo = 'sainnhe/sonokai'
+# hook_add = '''
+#         let g:sonokai_style = 'andromeda'
+#         colorscheme sonokai
+# '''
 
 [[plugins]]
 repo = 'nvim-treesitter/nvim-treesitter'
@@ -153,5 +176,39 @@ hook_add = '''
 repo = 'dense-analysis/ale'
 hook_add = '''
         let g:ale_disable_lsp = 1
-        let g:ale_lint_on_text_changed = 1
+        let g:ale_lint_on_save = 1
+        " let g:ale_lint_on_text_changed = 0  上記2つ合わせて保存時にLint走らせる
+        let g:ale_lint_on_text_changed = 2
+        let g:ale_fix_on_save = 1
+        let g:ale_fixers = {
+        \   'typescript': ['prettier'],
+        \   'typescriptreact': ['prettier'],
+        \   'javascript': ['prettier'],
+        \   'javascriptreact': ['prettier'],
+        \   'css': ['prettier'],
+        \} " デフォルトは全部適用なので、WhiteList形式で明示
+        let g:ale_echo_msg_format = '[%linter%] %code: %%s'
+        let g:ale_statusline_format = ['E%d', 'W%d', 'OK']
+        let g:ale_javascript_prettier_use_local_config = 1
 '''
+# hook_add = '''
+#         let g:ale_disable_lsp = 1
+#         let g:ale_lint_on_text_changed = 2
+#         let g:ale_linters = {
+#         \   'typescript': ['eslint']
+#         \}
+#         let g:ale_fixers = {}
+#         let g:ale_fixers['typescript'] = ['prettier-eslint']
+#         let g:ale_fix_on_save = 1
+#         let g:ale_javascript_prettier_use_local_config = 1
+# '''
+
+[[plugins]]
+repo = 'tpope/vim-endwise'
+
+# postfix completionという有償IDEでも使える補完
+[[plugins]]
+repo = 'mattn/vim-sonictemplate'
+
+[[plugins]]
+repo = 'windwp/nvim-ts-autotag'
