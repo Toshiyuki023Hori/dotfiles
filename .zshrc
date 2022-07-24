@@ -72,6 +72,7 @@ alias ya='yarn'
 alias j='z'
 alias ls='exa'
 alias lssp='exa -lahg --icons --git --time-style=long-iso'
+alias lssp-t='exa -lahg --icons --git --time-style=long-iso --sort oldest'
 alias cat='bat'
 alias prs='procs'
 alias ...="cd ../.."
