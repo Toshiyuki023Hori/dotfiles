@@ -12,7 +12,7 @@ noremap <Space>w :<C-u>w<CR>                                    " ファイル�
 noremap <Space>q :q<CR>                                         " 保存せずに閉じる
 noremap <Space>cl :close<CR>                                    " ウインドウを閉じる
 
-cnoremap ch<CR> :vs ~/Documents/1.Coding/.command_sheet.md<CR>                           ":ch入力でチートシート表示
+cnoremap ch<CR> :vs ~/dotfiles/.command_sheet.md<CR>                           ":ch入力でチートシート表示
 cnoremap edz<CR> :vs ~/.zshrc<CR>                           ":edz入力で.zshrc編集
 
 " Insert Mode
