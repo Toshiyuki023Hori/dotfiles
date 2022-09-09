@@ -4,16 +4,16 @@
 " Normal Mode
 " conoremap => NormalModeのkey-mapping
 " <C = Contorl キー
-cnoremap init :<C-u>edit ~/.config/nvim/init_config.vim<CR>                           " init.vim呼び出し
+cnoremap init<CR> :<C-u>edit ~/.config/nvim/init_config.vim<CR>                           " init.vim呼び出し
+cnoremap start<CR> :<C-u>edit ~/.config/nvim/dein/plugins/init_plugin.toml<CR>                           " init_plugin.toml呼び出し
+cnoremap lazy<CR> :<C-u>edit ~/.config/nvim/dein/plugins/lazy_plugin.toml<CR>                           " lazy_plugin.toml呼び出し
 nnoremap <Space>S :source ~/.config/nvim/init_config.vim<CR>                           " init.vim読み込み
-cnoremap start :<C-u>edit ~/.config/nvim/dein/plugins/init_plugin.toml<CR>                           " init_plugin.toml呼び出し
-cnoremap lazy :<C-u>edit ~/.config/nvim/dein/plugins/lazy_plugin.toml<CR>                           " lazy_plugin.toml呼び出し
 noremap <Space>w :<C-u>w<CR>                                    " ファイル保存
 noremap <Space>q :q<CR>                                         " 保存せずに閉じる
 noremap <Space>cl :close<CR>                                    " ウインドウを閉じる
 
 cnoremap ch<CR> :vs ~/dotfiles/.command_sheet.md<CR>                           ":ch入力でチートシート表示
-cnoremap edz<CR> :vs ~/.zshrc<CR>                           ":edz入力で.zshrc編集
+cnoremap vz<CR> :vs ~/.zshrc<CR>                           ":vz入力で.zshrc編集
 
 " Insert Mode
 " inoremap <silent> jj <ESC>:<C-u>w<CR>:" InsertMode抜けて保存

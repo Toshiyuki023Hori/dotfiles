@@ -60,6 +60,7 @@ alias dcud='docker-compose up -d'
 alias dsall='docker stop $(docker ps -q)'
 alias dsp-v='docker system prune --volumes'
 alias d-cex='docker-compose exec'
+alias d-crrm='docker-compose run --rm'
 
 # expo alias
 alias exr='expo r'
