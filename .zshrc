@@ -54,6 +54,7 @@ alias sz='source ~/.zshrc'
 alias vs="code"
 
 # #　Docker Alias
+alias dk='docker'
 alias d-c='docker-compose'
 alias dcb='docker-compose build'
 alias dcud='docker-compose up -d'
@@ -120,6 +121,10 @@ export FZF_DEFAULT_OPTS='--height 30% --border'
 ### open Java Developers Kit(open JDKのパス)
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
+
+### GOのPATH
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
