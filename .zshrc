@@ -6,9 +6,18 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # zコマンドを使う
+# なければclone
+if [[ ! -d ~/z_cmd ]];then
+  git clone https://github.com/rupa/z ~/z_cmd
+fi
 source ~/z_cmd/z.sh
 
-alias mysql="/usr/local/mysql/bin/mysql"
+# tmux内でCtrl + A が ^A に化けるので追加
+bindkey -e  # emacsモードで使う
+
+# HomeBrew管理にしたのでコメントアウト
+# 念のために削除はしない
+# alias mysql="/usr/local/mysql/bin/mysql"
 alias algo="cd /Users/mac_toshi/Documents/0_Algo/1_algo_training"
 alias vplug="cd ~/.config/nvim/dein/plugins"
 
@@ -112,8 +121,8 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 ### nodeがHomebrewに入っているのもあって、nodebrewのnodeを参照するように設定
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 export PGDATA='/usr/local/var/postgres'
-export XDG_CONFIG_HOME=/Users/mac_toshi/.config
-export XDG_CACHE_HOME=/Users/mac_toshi/.cache
+export XDG_CONFIG_HOME=~/.config
+export XDG_CACHE_HOME=~/.cache
 export PATH="$PATH:$HOME/.fzf/bin"
 export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
 export FZF_DEFAULT_OPTS='--height 30% --border'
@@ -125,6 +134,11 @@ export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
 ### GOのPATH
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
+
+export EDITOR=nvim
+
+# direnv用
+eval "$(direnv hook zsh)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -241,3 +255,4 @@ PROMPT='%F{magenta}%m@%n%f %F{blue}%~%f$ '
 
 # To use shell integration, run this .zsh file whenever starting terminal
 source ~/.iterm2_shell_integration.zsh
+export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
