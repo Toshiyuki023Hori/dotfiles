@@ -1,4 +1,14 @@
 [[plugins]]
+repo = 'nvim-treesitter/nvim-treesitter'
+merged = 0
+on_event = 'BufRead'
+hook_post_update = 'TSUpdate'
+# treesitterの設定
+# 意図的にlazyにしている
+# 参考: https://zenn.dev/mkobayashime/articles/nvim-treesitter-dein
+hook_source = 'source ~/dotfiles/dein/plugins/nvim-treesitter.lua'
+
+[[plugins]]
 #markdown preview
 repo = 'previm/previm'
 on_ft = ['markdown']
@@ -24,10 +34,6 @@ on_ft = ['ruby', 'rb']
 #markdown preview
 repo = 'styled-components/vim-styled-components'
 on_ft = ['ts','tsx','js','jsx']
-
-[[plugins]]
-repo = 'tpope/vim-endwise'
-on_ft = ['ruby', 'rb']
 
 #### どうやらvim-clangもdeopleteも効いていないご様子
 #### 今後研究する

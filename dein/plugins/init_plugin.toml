@@ -7,10 +7,9 @@ rev = 'release'
 on_i = 1
 merged = 0
 hook_add = '''
-        let g:coc_global_extensions = ['coc-json','coc-tsserver','coc-prettier','coc-eslint']
+        let g:coc_global_extensions = ['coc-json','coc-tsserver','coc-prettier','coc-eslint', 'coc-markdownlint', 'coc-spell-checker', 'coc-pairs', 'coc-vetur', 'coc-eslint']
         noremap <Space>gh :call CocAction('doHover')<CR>
 '''
-# hook_source = 'call coil398#init#coc#hook_source()'
 
 [[plugins]]
 repo = 'junegunn/fzf'
@@ -30,6 +29,22 @@ hook_add = '''
         nnoremap <C-g> :Rg<Space>
         nnoremap <silent> FF :Files<CR>
         nnoremap <silent> HH :History<CR>
+'''
+
+[[plugins]]
+repo = 'APZelos/blamer.nvim'
+hook_add = '''
+let g:blamer_date_format = '%y/%m/%d %H:%M'
+let g:blamer_delay = 300
+let g:blamer_enabled = 1
+let g:blamer_template = '<committer> <summary>'
+'''
+
+[[plugins]]
+repo = 'rhysd/git-messenger.vim'
+hook_add = '''
+let g:git_messenger_no_default_mappings = v:true
+nmap <Space>CM <Plug>(git-messenger)
 '''
 
 [[plugins]]
@@ -85,26 +100,11 @@ hook_add = '''
 # このマッピングはバッファ自体にインデックス番号を振るもの(現状使い道思い浮かばんから退避)
 # let g:airline#extensions#tabline#buffer_idx_mode = 1
 
-# このマッピングはバッファ移動のためだがなぜか効かない。忘れたくないのにここに退避
-# noremap <silent> ,n <Plug>AirlineSelectNextTab
-# noremap <silent> ,p <Plug>AirlineSelectPrevTab
-
-
 [[plugins]]
 repo = 'vim-airline/vim-airline-themes'
 hook_add = '''
         let g:airline_theme = 'powerlineish'
 '''
-
-[[plugins]]
-repo = 'cohama/lexima.vim'
-
-# なんか効かんくなったからコメントアウト
-# [[plugins]]
-# repo = 'nathanaelkane/vim-indent-guides'
-# hook_add = '''
-#         let g:indent_guides_enable_on_vim_startup = 1
-# '''
 
 [[plugins]]
 repo = 'Yggdroot/indentLine'
@@ -113,13 +113,6 @@ hook_add = '''
         let g:indentLine_color_gui = '#708090'
         let g:indentLine_char = '|'
 '''
-
-# キーマッピング作ったからとりあえず退避
-# [[plugins]]
-# repo = 'reireias/vim-cheatsheet'
-# hook_add = '''
-#         let g:cheatsheet#cheat_file = '/Users/mac_toshi/Documents/1.Coding/.command_sheet.md'
-# '''
 
 [[plugins]]
 repo = 'sainnhe/gruvbox-material'
@@ -137,9 +130,6 @@ hook_add = '''
 #         let g:sonokai_style = 'andromeda'
 #         colorscheme sonokai
 # '''
-
-[[plugins]]
-repo = 'nvim-treesitter/nvim-treesitter'
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
@@ -205,10 +195,10 @@ hook_add = '''
 
 [[plugins]]
 repo = 'tpope/vim-endwise'
+hook_add = '''
+        inoremap <silent><expr> <CR> pumvisible() ? coc#_select_confirm() :"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>\<c-r>=EndwiseDiscretionary()\<CR>" 
+'''
 
 # postfix completionという有償IDEでも使える補完
 [[plugins]]
 repo = 'mattn/vim-sonictemplate'
-
-[[plugins]]
-repo = 'windwp/nvim-ts-autotag'

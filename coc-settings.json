@@ -1,4 +1,12 @@
 {
+  "eslint.autoFixOnSave": true,
+  "eslint.filetypes": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "vue"
+  ],
   "languageserver": {
         "ccls": {
           "command": "ccls",
@@ -29,5 +37,6 @@
           }
         }
   },
-  "diagnostic.displayByAle": true
+  "diagnostic.displayByAle": true,
+  "coc.preferences.formatOnType": true,
 }

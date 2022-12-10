@@ -4,7 +4,8 @@
 " Normal Mode
 " conoremap => NormalModeのkey-mapping
 " <C = Contorl キー
-cnoremap init<CR> :<C-u>edit ~/.config/nvim/init_config.vim<CR>                           " init.vim呼び出し
+cnoremap init<CR> :<C-u>edit ~/.config/nvim/init.vim<CR>                           " init.vim呼び出し
+cnoremap config<CR> :<C-u>edit ~/.config/nvim/init_config.vim<CR>                           " init_config.vim呼び出し
 cnoremap start<CR> :<C-u>edit ~/.config/nvim/dein/plugins/init_plugin.toml<CR>                           " init_plugin.toml呼び出し
 cnoremap lazy<CR> :<C-u>edit ~/.config/nvim/dein/plugins/lazy_plugin.toml<CR>                           " lazy_plugin.toml呼び出し
 nnoremap <Space>S :source ~/.config/nvim/init_config.vim<CR>                           " init.vim読み込み
@@ -49,7 +50,7 @@ set hlsearch "検索結果をハイライト表示
 set incsearch
 set wildmenu "コマンドラインモードの補完を見やすく
 
-"jキーを二度押しでESCキー
+" jキーを二度押しでESCキー
 inoremap <silent> jj <Esc>
 
 "バッファの移動
@@ -96,18 +97,4 @@ augroup fileTypeIndent
     autocmd BufNewFile,BufRead *.json setlocal tabstop=2 softtabstop=2 shiftwidth=2
     autocmd BufNewFile,BufRead *.md setlocal tabstop=2 softtabstop=2 shiftwidth=2
 augroup END
-
-" treesitterの設定
-
-lua <<EOF
-require('nvim-treesitter.configs').setup {
-  ensure_installed =  "maintained" ,
-  highlight = {
-    enable = true,
-  },
-  autotag = {
-          enable = true,
-          }
-}
-EOF
 
