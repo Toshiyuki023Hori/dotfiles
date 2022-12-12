@@ -23,25 +23,37 @@ if dein#load_state(s:dein_dir)
   " 各プラグインのtomlを読み込む
 	call dein#load_toml( s:toml_dir . '/init_plugin.toml', {'lazy': 0} )
 	call dein#load_toml( s:toml_dir . '/lazy_plugin.toml', {'lazy': 1} )
-	" call dein#load_toml( s:toml_dir . '/vim-surround.toml', {} )
-	" call dein#load_toml( s:toml_dir . '/yankround.vims.toml', {} )
-	" call dein#load_toml( s:toml_dir . '/fzf.vim.toml', {} )
-	" call dein#load_toml( s:toml_dir . '/lightline.vim.toml', {} )
-	" call dein#load_toml( s:toml_dir . '/ctrlp.vim.toml', {} )
-	" call dein#load_toml( s:toml_dir . '/iceberg.vim.toml', {} )
-	" call dein#load_toml( s:toml_dir . '/smart_tabline.vim.toml', {} )
-	" call dein#load_toml( s:toml_dir . '/vim-altercmd.toml', {} )
+    " 詳しくは下記記事参照だが、treesitterのみ個別でロード
+    " https://zenn.dev/mkobayashime/articles/nvim-treesitter-dein
+    " これだと [dein] Vim(source):E5113: Error while calling lua chunk: /home/mkobayashime/.config/nvim/plugins/nvim-treesitter.lua:1: module 'nvim-treesitter.configs' not found: というエラーが出てしまう
+    " hook_add は plugin が読み込まれたあとで実行されるわけではないので、nvim-treesitter.confis なんてものはないと怒られている
+    call dein#add('nvim-treesitter/nvim-treesitter', {'merged': 0})
 	
   call dein#end()
 	call dein#save_state()
 endif
+
+
 " 各プラグインのインストールチェック（なかったら自動的に追加される）
 if dein#check_install()
 	call dein#install()
 endif
 
+if filereadable('./init_api_token.vim')
+    source  ./init_api_token.vim
+endif
+
+
+" 各プラグインの更新チェック
+if dein#check_update(v:true)
+    call dein#check_update(v:true)
+endif
+
 " vim初期起動時の設定を読み込む
 source ~/.config/nvim/init_config.vim
+
+" treesitterの設定読み込み
+source ~/dotfiles/dein/plugins/nvim-treesitter.lua
 
 " if hidden is not set, TextEdit might fail.
 set hidden

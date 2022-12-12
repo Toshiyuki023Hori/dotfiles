@@ -12,9 +12,18 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'nvim-ts-autotag'
+
+[[plugins]]
 repo = 'junegunn/fzf'
 hook_post_update = './install --all'
 merged = 0
+# Vimでfzf使うには下記設定必要(brewでinstall時に表示)
+# To use fzf in Vim, add the following line to your .vimrc:
+#   set rtp+=/opt/homebrew/opt/fzf
+hook_add = '''
+        set rtp+=/opt/homebrew/opt/fzf
+'''
 
 [[plugins]]
 repo = 'junegunn/fzf.vim'
