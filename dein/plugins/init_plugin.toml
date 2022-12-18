@@ -202,11 +202,6 @@ hook_add = '''
 #         let g:ale_javascript_prettier_use_local_config = 1
 # '''
 
-[[plugins]]
-repo = 'tpope/vim-endwise'
-hook_add = '''
-        inoremap <silent><expr> <CR> pumvisible() ? coc#_select_confirm() :"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>\<c-r>=EndwiseDiscretionary()\<CR>" 
-'''
 
 # postfix completionという有償IDEでも使える補完
 [[plugins]]

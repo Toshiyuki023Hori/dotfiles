@@ -20,6 +20,13 @@ hook_source = '''
 [[plugins]]
 repo = 'tpope/vim-endwise'
 on_ft = ['ruby', 'rb']
+hook_add = '''
+        inoremap <silent><expr> <CR> pumvisible() ? coc#_select_confirm() :"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>\<c-r>=EndwiseDiscretionary()\<CR>"
+'''
+
+[[plugins]]
+repo = 'tpope/vim-rails'
+on_ft = ['ruby', 'rb']
 
 [[plugins]]
 #markdown preview
