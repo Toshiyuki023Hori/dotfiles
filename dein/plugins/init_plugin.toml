@@ -207,3 +207,9 @@ hook_add = '''
 # postfix completionという有償IDEでも使える補完
 [[plugins]]
 repo = 'mattn/vim-sonictemplate'
+
+[[plugins]]
+repo = 'thinca/vim-quickrun'
+hook_add = '''
+    nmap <Space>RR :QuickRun<CR>
+'''
