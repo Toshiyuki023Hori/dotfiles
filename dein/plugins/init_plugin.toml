@@ -184,6 +184,7 @@ hook_add = '''
         \   'typescriptreact': ['prettier'],
         \   'javascript': ['prettier'],
         \   'javascriptreact': ['prettier'],
+        \   'vue': ['prettier'],
         \   'css': ['prettier'],
         \} " デフォルトは全部適用なので、WhiteList形式で明示
         let g:ale_echo_msg_format = '[%linter%] %code: %%s'
