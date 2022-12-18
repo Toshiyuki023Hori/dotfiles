@@ -39,15 +39,19 @@ if dein#check_install()
 	call dein#install()
 endif
 
-if filereadable('./init_api_token.vim')
-    source  ./init_api_token.vim
+" GitHub apt file.
+let s:dein_github_api_token = './init_api_token.vim'
+
+" dein_github_api_tokenが有るか確認する。
+if filereadable(s:dein_github_api_token)
+
+    " ここで、g:dein#install_github_api_tokenにPATをセットする。
+    let g:dein#install_github_api_token = readfile(s:dein_github_api_token)[0]
 endif
 
-
-" 各プラグインの更新チェック
-if dein#check_update(v:true)
-    call dein#check_update(v:true)
-endif
+" Check for plugin updates on github graphQL api.{{{
+command! DeinUpdate call dein#check_update(v:true)
+" }}}
 
 " vim初期起動時の設定を読み込む
 source ~/.config/nvim/init_config.vim
