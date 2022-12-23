@@ -208,6 +208,9 @@ hook_add = '''
 # postfix completionという有償IDEでも使える補完
 [[plugins]]
 repo = 'mattn/vim-sonictemplate'
+hook_add = '''
+    let g:sonictemplate_vim_template_dir = '~/dotfiles/dein/plugins/sonictemplate'
+'''
 
 [[plugins]]
 repo = 'thinca/vim-quickrun'

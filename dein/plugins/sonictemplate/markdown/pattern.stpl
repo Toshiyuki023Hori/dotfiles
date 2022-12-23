@@ -1,0 +1,6 @@
+\(\S\+\)\.toggle$
+	<details>
+	<summary>{{$1}}</summary>
+	{{_cursor_}}
+	
+	</details>
