@@ -6,8 +6,9 @@ repo = 'neoclide/coc.nvim'
 rev = 'release'
 on_i = 1
 merged = 0
+# solargraphに関してはグローバルインストールで対応
 hook_add = '''
-        let g:coc_global_extensions = ['coc-json','coc-tsserver','coc-prettier','coc-eslint', 'coc-markdownlint', 'coc-spell-checker', 'coc-pairs', 'coc-vetur', 'coc-eslint']
+        let g:coc_global_extensions = ['coc-json','coc-tsserver','coc-prettier','coc-eslint', 'coc-markdownlint', 'coc-spell-checker', 'coc-pairs', 'coc-vetur', 'coc-eslint', 'coc-solargraph']
         noremap <Space>gh :call CocAction('doHover')<CR>
 '''
 
