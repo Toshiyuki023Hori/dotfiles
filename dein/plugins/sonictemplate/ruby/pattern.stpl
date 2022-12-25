@@ -1,2 +1,12 @@
 ^\s*\zs\(\S.*\)\.pp$
 	pp {{$1}}{{_cursor_}}
+
+^\s*\zs\(\S.*\)\.cls$
+	class {{$1}}
+		{{_cursor_}}
+	end
+
+^\s*\zs\(\S.*\)\.mdl$
+	module {{$1}}
+		{{_cursor_}}
+	end
