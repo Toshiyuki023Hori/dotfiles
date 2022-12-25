@@ -18,11 +18,8 @@ hook_source = '''
 '''
 
 [[plugins]]
-repo = 'tpope/vim-endwise'
-on_ft = ['ruby', 'rb']
-hook_add = '''
-        inoremap <silent><expr> <CR> pumvisible() ? coc#_select_confirm() :"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>\<c-r>=EndwiseDiscretionary()\<CR>"
-'''
+repo = 'RRethy/nvim-treesitter-endwise'
+on_i = 1
 
 [[plugins]]
 repo = 'tpope/vim-rails'

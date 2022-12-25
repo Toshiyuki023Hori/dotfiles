@@ -21,7 +21,10 @@ require('nvim-treesitter.configs').setup {
     enable = true,
   },
   autotag = {
-          enable = true,
-          }
+    enable = true,
+  },
+  endwise = {
+    enable = true,
+  }
 }
 
