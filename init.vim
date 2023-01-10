@@ -104,10 +104,10 @@ inoremap <silent><expr> <c-space> coc#refresh()
 " coc.nvimの補完をEnterで確定させるために、
 " 下記を追加することで他のプラグインからのマッピングを防ぐ
 " You have to remap <cr> to make it confirms completion.
-inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+" inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 " キーマッピングの単純化のためコメントアウト
 " To make <cr> select the first completion item and confirm the completion when no item has been selected:
-"   " inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
