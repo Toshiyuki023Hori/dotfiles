@@ -29,7 +29,7 @@ hook_source = '''
 
 [[plugins]]
 repo = 'RRethy/nvim-treesitter-endwise'
-on_i = 1
+on_ft = ['ruby', 'rb']
 
 [[plugins]]
 repo = 'tpope/vim-rails'

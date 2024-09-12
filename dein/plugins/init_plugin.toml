@@ -12,7 +12,7 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'nvim-ts-autotag'
+repo = 'windwp/nvim-ts-autotag'
 
 [[plugins]]
 repo = 'junegunn/fzf'
@@ -39,6 +39,7 @@ hook_add = '''
         nnoremap <silent> FF :Files<CR>
         nnoremap <silent> HH :History<CR>
 '''
+
 
 [[plugins]]
 repo = 'APZelos/blamer.nvim'
@@ -238,3 +239,19 @@ hook_add = '''
     nmap <silent>JJ <Plug>(edgemotion-j)
     nmap <silent>KK <Plug>(edgemotion-k)
 '''
+
+[[plugins]]
+repo = 'mg979/vim-visual-multi'
+rev = 'master'
+
+[[plugins]]
+repo = 'hotwatermorning/auto-git-diff'
+
+[[plugins]]
+repo = 'rhysd/committia.vim'
+
+[[plugins]]
+repo = 'lambdalisue/gina.vim'
+
+[[plugins]]
+repo = 'kamykn/spelunker.vim'
