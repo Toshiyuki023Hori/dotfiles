@@ -28,6 +28,9 @@ if dein#load_state(s:dein_dir)
     " これだと [dein] Vim(source):E5113: Error while calling lua chunk: /home/mkobayashime/.config/nvim/plugins/nvim-treesitter.lua:1: module 'nvim-treesitter.configs' not found: というエラーが出てしまう
     " hook_add は plugin が読み込まれたあとで実行されるわけではないので、nvim-treesitter.confis なんてものはないと怒られている
     call dein#add('nvim-treesitter/nvim-treesitter', {'merged': 0})
+    if has('nvim') || has('patch-9.0.0185')
+      call dein#add('github/copilot.vim')
+    endif
 	
   call dein#end()
 	call dein#save_state()
@@ -58,6 +61,9 @@ source ~/.config/nvim/init_config.vim
 
 " treesitterの設定読み込み
 source ~/dotfiles/dein/plugins/nvim-treesitter.lua
+
+" kamykn/spelunker.vim を使うための設定(https://github.com/kamykn/spelunker.vim#21-settings)
+set nospell
 
 " if hidden is not set, TextEdit might fail.
 set hidden

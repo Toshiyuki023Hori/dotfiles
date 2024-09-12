@@ -61,6 +61,15 @@ noremap <silent> bd :bdelete
 " :bの後に数字を入れてbuffer移動
 noremap <silent> <Space>b :b
 
+" copilot用の設定
+" TABキーを使わないように
+imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true
+
+imap <silent> <M-i> <Plug>(copilot-next)
+imap <silent> <M-o> <Plug>(copilot-previous)
+
+
 "===== その他 =====
 "履歴を10000件保存
 set history=10000
