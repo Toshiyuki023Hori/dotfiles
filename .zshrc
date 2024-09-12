@@ -21,6 +21,24 @@ bindkey -e  # emacsモードで使う
 alias algo="cd /Users/mac_toshi/Documents/0_Algo/1_algo_training"
 alias vplug="cd ~/.config/nvim/dein/plugins"
 
+# ngrok疎通用
+alias ngrok-s="ngrok http --domain=fit-lobster-upright.ngrok-free.app 3000 --region=us"
+# docker環境最新化
+alias d-wake="d-c run --rm app bundle install && d-c run --rm app bin/yarn install && d-c run --rm app bin/rails db:migrate && d-c up app worker shakapacker-dev-server"
+# webへの移動
+alias v1="cd ~/enpay_dir/web"
+# enpayへの移動
+alias v2="cd ~/enpay_dir/enpay"
+# enapyの起動
+alias d-wake-v2="cd ~/enpay_dir/enpay && d-c up"
+# admin-frontのVSCode起動
+alias v-admin="cd ~/enpay_dir/enpay/admin-front && code ."
+# back-endのVSCode起動
+alias v-back="cd ~/enpay_dir/enpay/back-end && code ."
+# enpayレポジトリのcdkのVSCode起動
+alias v-cdk="cd ~/enpay_dir/enpay/cdk && code ."
+
+
 # Git Alias
 alias g='git'
 alias gst='git status'
@@ -28,7 +46,6 @@ alias gc-m='git commit -m'
 alias gc='git checkout'
 ### git treeは個人的に作成したgit logの整形alias(.gitconfig参照)
 alias gtree='git tree'
-
 
 # Push all changes to current branch
 gcom () {
@@ -64,13 +81,14 @@ alias vs="code"
 
 # #　Docker Alias
 alias dk='docker'
-alias d-c='docker-compose'
-alias dcb='docker-compose build'
-alias dcud='docker-compose up -d'
+alias dbp='docker builder prune'
+alias d-c='docker compose'
+alias dcb='docker compose build'
+alias dcud='docker compose up -d'
 alias dsall='docker stop $(docker ps -q)'
 alias dsp-v='docker system prune --volumes'
-alias d-cex='docker-compose exec'
-alias d-crrm='docker-compose run --rm'
+alias d-cex='docker compose exec'
+alias d-crrm='docker compose run --rm'
 
 # expo alias
 alias exr='expo r'
@@ -84,7 +102,7 @@ alias j='z'
 alias ls='exa'
 alias lssp='exa -lahg --icons --git --time-style=long-iso'
 alias lssp-t='exa -lahg --icons --git --time-style=long-iso --sort oldest'
-alias cat='bat'
+alias ct='bat'
 alias prs='procs'
 alias ...="cd ../.."
 alias ....="cd ../../../"
@@ -115,8 +133,11 @@ kcash(){
 setopt auto_cd
 
 # path
-export PATH="/usr/local/mysql/bin:$PATH"
+export PATH="/opt/homebrew/opt/mysql/bin:$PATH"
+# export PATH="/usr/local/mysql/bin:$PATH"
+export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
+export LIBRARY_PATH=$LIBRARY_PATH:$(brew --prefix zstd)/lib
 
 ### nodeがHomebrewに入っているのもあって、nodebrewのnodeを参照するように設定
 export PATH=$HOME/.nodebrew/current/bin:$PATH
@@ -131,11 +152,13 @@ export FZF_DEFAULT_OPTS='--height 30% --border'
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
 
-### GOのPATH
+# ### GOのPATH
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
 export EDITOR=nvim
+
+export AWS_DEFAULT_REGION=ap-northeast-1
 
 # direnv用
 eval "$(direnv hook zsh)"
