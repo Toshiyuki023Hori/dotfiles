@@ -83,11 +83,19 @@ set signcolumn=yes
 inoremap <silent><expr> <Tab>
       \ coc#pum#visible() ? coc#pum#next(1) :
       \ CheckBackspace() ? "\<Tab>" :
+inoremap <silent><expr> <Tab>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
       \ coc#refresh()
 " Use <Tab> and <S-Tab> to navigate the completion list: https://github.com/neoclide/coc.nvim/wiki/Completion-with-sources#use-tab-and-s-tab-to-navigate-the-completion-list
 inoremap <expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
 inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+" Use <Tab> and <S-Tab> to navigate the completion list: https://github.com/neoclide/coc.nvim/wiki/Completion-with-sources#use-tab-and-s-tab-to-navigate-the-completion-list
+inoremap <expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
+inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
+" use <tab> for trigger completion and navigate to the next complete item
+function! CheckBackspace() abort
 " use <tab> for trigger completion and navigate to the next complete item
 function! CheckBackspace() abort
   let col = col('.') - 1
@@ -97,8 +105,19 @@ endfunction
 " 確実に<TAB>を使えるように(=他のプラグインから上書きされないように)下記の記述を追加
 " Use <C-@> on vim
 inoremap <silent><expr> <c-@> coc#refresh()
+" 確実に<TAB>を使えるように(=他のプラグインから上書きされないように)下記の記述を追加
+" Use <C-@> on vim
+inoremap <silent><expr> <c-@> coc#refresh()
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
+
+" https://github.com/neoclide/coc.nvim/wiki/Completion-with-sources#use-cr-to-confirm-completion
+" coc.nvimの補完をEnterで確定させるために、
+" 下記を追加することで他のプラグインからのマッピングを防ぐ
+" You have to remap <cr> to make it confirms completion.
+inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+" To make <cr> select the first completion item and confirm the completion when no item has been selected:
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " https://github.com/neoclide/coc.nvim/wiki/Completion-with-sources#use-cr-to-confirm-completion
 " coc.nvimの補完をEnterで確定させるために、

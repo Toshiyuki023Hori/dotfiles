@@ -1,4 +1,14 @@
 [[plugins]]
+repo = 'nvim-treesitter/nvim-treesitter'
+merged = 0
+on_event = 'BufRead'
+hook_post_update = 'TSUpdate'
+# treesitterの設定
+# 意図的にlazyにしている
+# 参考: https://zenn.dev/mkobayashime/articles/nvim-treesitter-dein
+hook_source = 'source ~/dotfiles/dein/plugins/nvim-treesitter.lua'
+
+[[plugins]]
 #markdown preview
 repo = 'previm/previm'
 on_ft = ['markdown']
