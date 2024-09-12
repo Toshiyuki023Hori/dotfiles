@@ -1,0 +1,4 @@
+bind main D !sh -c "git difftool %(commit)~ %(commit)"
+
+# ` で commit ID をクリップボードにコピー (Mac用)
+bind generic `      @bash -c "echo -n '%(commit)' | pbcopy"
