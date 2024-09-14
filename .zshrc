@@ -99,13 +99,14 @@ alias ya='yarn'
 
 # Linux Alias
 alias j='z'
-alias ls='exa'
-alias lssp='exa -lahg --icons --git --time-style=long-iso'
-alias lssp-t='exa -lahg --icons --git --time-style=long-iso --sort oldest'
-alias ct='bat'
+alias ls='eza'
+alias lssp='eza -lahg --icons --git --time-style=long-iso'
+alias lssp-t='eza -lahg --icons --git --time-style=long-iso --sort oldest'
+alias cat='bat'
 alias prs='procs'
 alias ...="cd ../.."
 alias ....="cd ../../../"
+alias hist='cat ~/.zsh_history'
 
 # Vim Alias
 alias vi="nvim"
