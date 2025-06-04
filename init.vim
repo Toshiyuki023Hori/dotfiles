@@ -8,7 +8,7 @@ let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 let s:toml_file = expand('~/.config/nvim/dein') . '/plugins.toml'
 let s:toml_dir = expand('~/.config/nvim/dein/plugins')
 " Vimにはruntime <filename>というコマンドがあり、指定したファイルを読み込み、Vimスクリプトとして実行させることができます
-" runtimeコマンドで指定するファイルは’runtimepath’上から読むよということを言っているようです。
+" runtimeコマンドで指定するファイルは'runtimepath'上から読むよということを言っているようです。
 " dein.vim ディレクトリがruntimepathに入っていない場合、追加
 if match( &runtimepath, '/dein.vim' ) == -1
   " dein_repo_dir で指定した場所に dein.vim が無い場合、git cloneしてくる
@@ -247,4 +247,5 @@ if executable('clang-format')
     autocmd BufWrite,FileWritePre,FileAppendPre *.[ch]pp call s:clang_format()
   augroup END
 endif
+endfunction
 
