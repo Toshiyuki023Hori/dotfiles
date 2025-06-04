@@ -22,9 +22,10 @@ alias algo="cd /Users/mac_toshi/Documents/0_Algo/1_algo_training"
 alias vplug="cd ~/.config/nvim/dein/plugins"
 
 # ngrok疎通用
-alias ngrok-s="ngrok http --domain=fit-lobster-upright.ngrok-free.app 3000 --region=us"
+# alias ngrok-s="ngrok http --domain=fit-lobster-upright.ngrok-free.app 3000 --region=us"
+alias ngrok-s="ngrok http --domain=fit-lobster-upright.ngrok-free.app https://localhost:3000 --region=us"
 # docker環境最新化
-alias d-wake="d-c run --rm app bundle install && d-c run --rm app bin/yarn install && d-c run --rm app bin/rails db:migrate && d-c up app worker shakapacker-dev-server"
+alias d-wake="d-c run --rm app bundle install && d-c run --rm app yarn install && d-c run --rm app bin/rails db:migrate && d-c up app worker shakapacker-dev-server"
 # webへの移動
 alias v1="cd ~/enpay_dir/web"
 # enpayへの移動
@@ -102,7 +103,7 @@ alias j='z'
 alias ls='eza'
 alias lssp='eza -lahg --icons --git --time-style=long-iso'
 alias lssp-t='eza -lahg --icons --git --time-style=long-iso --sort oldest'
-alias cat='bat'
+alias ct='bat'
 alias prs='procs'
 alias ...="cd ../.."
 alias ....="cd ../../../"
@@ -134,9 +135,10 @@ kcash(){
 setopt auto_cd
 
 # path
-export PATH="/opt/homebrew/opt/mysql/bin:$PATH"
+export PATH="/opt/homebrew/opt/mysql@8.0/bin:$PATH"
 # export PATH="/usr/local/mysql/bin:$PATH"
-export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
+export PATH="/opt/homebrew/opt/mysql-client@8.0/bin:$PATH"
+# export PATH=/~/homebrew/bin:$PATH
 export PATH="$HOME/.rbenv/bin:$PATH"
 export LIBRARY_PATH=$LIBRARY_PATH:$(brew --prefix zstd)/lib
 
